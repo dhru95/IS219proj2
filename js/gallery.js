@@ -93,11 +93,14 @@ function GalleryImage(imgLocation, imgDescription, imgDate, imgPath) {
 
 
 function reqListener () {
-  
-     console.log(this.responseText);
-  
+  try{
+    var mJson = JSON.parse(this.responseText);
+    for(var i = 0; i < mJson.images.length; i++) {
+      var PicInfo = mJson.images[i];
+      var galleryImage = new GalleryImage(PicInfo.imgLocation,PicInfo.imgDescription,PicInfo.imgDate,PicInfo.imgPath);
+      mImages.push(galleryImage);
     }
-  var mRequest = new XMLHttpRequest();
+  }catch(error){
     mRequest.addEventListener("load", reqListener);
     mRequest.open("GET","images.json");
     mRequest.send();
