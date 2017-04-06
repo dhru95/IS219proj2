@@ -90,3 +90,20 @@ function GalleryImage(imgLocation, imgDescription, imgDate, imgPath) {
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
   this.imgPath = imgPath;
 }
+
+
+function reqListener () {
+  
+     console.log(this.responseText);
+  
+    }
+  var mRequest = new XMLHttpRequest();
+    mRequest.addEventListener("load", reqListener);
+    mRequest.open("GET","images.json");
+    mRequest.send();
+  }
+}
+
+mRequest.addEventListener("load", reqListener);
+mRequest.open("GET", mUrl);
+mRequest.send();
