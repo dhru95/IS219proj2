@@ -37,9 +37,16 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	console.log('swap photo');
+	
+	if(mCurrentIndex > mImages.length-1){
+    mCurrentIndex = 0;
+    }else if (mCurrentIndex < 0) {
+    mCurrentIndex = mImages.length-1;
+	
 }
-
+	console.log('swap photo');
+	mCurrentIndex++;
+}
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
