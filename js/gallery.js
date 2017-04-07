@@ -79,14 +79,14 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage(imgLocation, imgDescription, imgDate, imgPath) {
+function GalleryImage(imgLocation, description, date, imgPath) {
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
   this.imgLocation = imgLocation;
 	//2. description of photo
-  this.imgDescription = imgDescription;
+  this.description = description;
 	//3. the date when the photo was taken
-  this.imgDate = imgDate;
+  this.date = date;
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
   this.imgPath = imgPath;
 }
@@ -96,8 +96,8 @@ function reqListener () {
   try{
     var mJson = JSON.parse(this.responseText);
     for(var i = 0; i < mJson.images.length; i++) {
-      var PicInfo = mJson.images[i];
-      var galleryImage = new GalleryImage(PicInfo.imgLocation,PicInfo.imgDescription,PicInfo.imgDate,PicInfo.imgPath);
+      var picInfo = mJson.images[i];
+      var galleryImage = new GalleryImage(picInfo.imgLocation,picInfo.description,picInfo.date,picInfo.imgPath);
       mImages.push(galleryImage);
     }
   }catch(error){
